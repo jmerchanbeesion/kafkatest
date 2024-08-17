@@ -1,0 +1,43 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "topic",
+        "type": "string"
+      },
+      {
+        "name": "partition",
+        "type": "integer"
+      },
+      {
+        "name": "message",
+        "type": "KafkaMessage"
+      }
+    ],
+    "statements": [
+      {
+        "command": "ConsoleLog",
+        "expression": "\"Message received on topic: \" + ^topic + \". Partition: \" + ConvertToString(^partition)"
+      },
+      {
+        "command": "Throw",
+        "errorName": "Error",
+        "expressionData": "\"Error simulado\"",
+        "expressionInnerError": "null"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "fromBeginning": true,
+  "groupId": "2",
+  "isParameterizedGroupId": false,
+  "parameterizedGroupId": {
+    "configParameterName": null
+  },
+  "parameterizedTopics": [],
+  "systemName": "MyKafka",
+  "topics": [
+    "my-topic-error"
+  ]
+}

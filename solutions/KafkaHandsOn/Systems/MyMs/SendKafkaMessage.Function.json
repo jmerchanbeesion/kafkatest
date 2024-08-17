@@ -1,0 +1,46 @@
+{
+  "algorithm": {
+    "parameters": [],
+    "statements": [
+      {
+        "command": "Set",
+        "expression": "{\n  key: \"message-key\",\n  value: JsonStringify({\n\tid: ConvertToInteger(Random()),\n\tcontent: \"This is a test message\",\n\ttimestamp: Now()\n  }),\n  headers: {\n\theaderKey: \"headerValue\"\n  }\n}",
+        "variableName": "kafkaMessage"
+      },
+      {
+        "command": "Set",
+        "expression": "[]",
+        "variableName": "listMessages"
+      },
+      {
+        "command": "Push",
+        "expressionItem": "^kafkaMessage",
+        "variableNameList": "listMessages"
+      },
+      {
+        "command": "Return",
+        "expression": "KafkaSend(MyKafka, \"my-topic\", ^listMessages)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": [
+      {
+        "name": "kafkaMessage",
+        "type": "KafkaMessage"
+      },
+      {
+        "name": "listMessages",
+        "type": "list(KafkaMessage)"
+      },
+      {
+        "name": "kafkaHeader",
+        "type": "KafkaMessageHeader"
+      }
+    ]
+  },
+  "routing": {
+    "method": "POST",
+    "path": "/send-kafka-message",
+    "remarks": "Sends a test kafka message"
+  }
+}

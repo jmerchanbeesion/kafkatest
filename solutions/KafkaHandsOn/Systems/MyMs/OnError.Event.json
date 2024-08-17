@@ -1,0 +1,36 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "err",
+        "type": "Error"
+      },
+      {
+        "name": "httpRequest",
+        "type": "HttpRequest"
+      },
+      {
+        "name": "httpResponse",
+        "type": "HttpResponse"
+      }
+    ],
+    "statements": [
+      {
+        "command": "Comment",
+        "comment": "Blazedpath already logs all 500 errors. This condition is to log the other code errors"
+      },
+      {
+        "children": [
+          {
+            "command": "ConsoleError",
+            "expression": "{ \n\terrCode: err.code,\n\terrMessage: err[\"message\"],\n    errStack: err[\"stack\"],\n    errRaw: err.raw,\n    errorData: err.data,\n    errInnerError: err.innerError,\n    errInnerErrorMessage: err.innerError[\"message\"],\n    errInnerErrorStack: err.innerError[\"stack\"],\n    httpRequest: httpRequest, \n    httpResponse: httpResponse\n}"
+          }
+        ],
+        "command": "If",
+        "expression": "httpResponse.status != 500"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  }
+}

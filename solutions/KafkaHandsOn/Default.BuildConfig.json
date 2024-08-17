@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "systemName": "MyMs",
+      "action": "build"
+    },
+    {
+      "systemName": "MyKafka",
+      "action": "connect",
+      "connectionData": {
+        "brokers": "0.0.0.0:29092",
+        "connectionTimeout": 3000,
+        "requestTimeout": 3000,
+        "connectionRetries": 3,
+        "connectionInitialRetryTime": 3000,
+        "connectionMaxRetryTime": 60000,
+        "connectionRetryFactor": 1.5,
+        "retryTopic": "error-topic",
+        "messageRetryCount": 2,
+        "initialRetryTime": 100,
+        "messageRetryFactor": 2,
+        "messageRetryMultiplier": 2,
+        "errorOptions": true,
+        "messageManualCommit": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "algorithm": {
+    "parameters": [
+      {
+        "name": "topic",
+        "type": "string"
+      },
+      {
+        "name": "partition",
+        "type": "integer"
+      },
+      {
+        "name": "message",
+        "type": "KafkaMessage"
+      }
+    ],
+    "statements": [
+      {
+        "command": "ConsoleLog",
+        "expression": "\"Message received on topic: \" + ^topic + \". Partition: \" + ConvertToString(^partition)"
+      },
+      {
+        "command": "ConsoleLog",
+        "expression": "\"Message: \" + JsonStringify(^message)"
+      }
+    ],
+    "typeReturn": "any",
+    "variables": []
+  },
+  "fromBeginning": true,
+  "groupId": "1",
+  "isParameterizedGroupId": false,
+  "parameterizedGroupId": {
+    "configParameterName": null
+  },
+  "parameterizedTopics": [],
+  "systemName": "MyKafka",
+  "topics": [
+    "my-topic"
+  ]
+}
