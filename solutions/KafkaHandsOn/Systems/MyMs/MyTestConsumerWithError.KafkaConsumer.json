@@ -17,12 +17,12 @@
     "statements": [
       {
         "command": "ConsoleLog",
-        "expression": "\"Message received on topic: \" + ^topic + \". Partition: \" + ConvertToString(^partition)"
+        "expression": "\"Message: \" + JsonStringify(^message)"
       },
       {
         "command": "Throw",
         "errorName": "Error",
-        "expressionData": "\"Error simulado\"",
+        "expressionData": "\"Custom error message\"",
         "expressionInnerError": "null"
       }
     ],
@@ -32,6 +32,9 @@
   "fromBeginning": true,
   "groupId": "2",
   "isParameterizedGroupId": false,
+  "parameterizedErrorTopic": {
+    "configParameterName": "RetryTopic"
+  },
   "parameterizedGroupId": {
     "configParameterName": null
   },
@@ -39,5 +42,6 @@
   "systemName": "MyKafka",
   "topics": [
     "my-topic-error"
-  ]
+  ],
+  "useErrorTopic": true
 }

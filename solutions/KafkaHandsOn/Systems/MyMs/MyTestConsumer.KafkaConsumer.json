@@ -30,6 +30,9 @@
   "fromBeginning": true,
   "groupId": "1",
   "isParameterizedGroupId": false,
+  "parameterizedErrorTopic": {
+    "configParameterName": null
+  },
   "parameterizedGroupId": {
     "configParameterName": null
   },
@@ -37,5 +40,6 @@
   "systemName": "MyKafka",
   "topics": [
     "my-topic"
-  ]
+  ],
+  "useErrorTopic": true
 }

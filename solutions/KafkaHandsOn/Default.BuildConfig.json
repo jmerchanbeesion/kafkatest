@@ -2,7 +2,13 @@
   "items": [
     {
       "systemName": "MyMs",
-      "action": "build"
+      "action": "build",
+      "parameters": [
+        {
+          "configParameterName": "RetryTopic",
+          "value": "error-topic"
+        }
+      ]
     },
     {
       "systemName": "MyKafka",
@@ -21,7 +27,8 @@
         "messageRetryFactor": 2,
         "messageRetryMultiplier": 2,
         "errorOptions": true,
-        "messageManualCommit": true
+        "messageManualCommit": true,
+        "traceAll": true
       }
     }
   ]

@@ -1,0 +1,12 @@
+{
+  "items": [
+    {
+      "systemName": "MyMs",
+      "action": "build"
+    },
+    {
+      "systemName": "MyKafka",
+      "action": "mock"
+    }
+  ]
+}
